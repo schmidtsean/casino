@@ -1,27 +1,47 @@
-# Basic Objectives:
+puts "What Is Your Name?"
+name = gets.chomp
+puts "How Much Would You Like To Add To Your Account?"
+account = gets.chomp.to_f
+puts "Hello #{name} your account total is #{account}"
 
-# Start game player has a name and an initial bankroll
-# Player can go to different games via menu
-# Slots
-# High / Low
-# Player places bet and wins / loses (hint: rand)
-# Player's bankroll goes up and down with wins and losses
-# Bonus Objectives:
+@wallet = account 
 
-# Ability to move to and from games
-# Find a gem that allows you to play sound and find casino sounds that will play on each game change/events
-# Gem discovery: go to rubygems.org and find more gems that you want to implement in your project and use
-# The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
-# Find ASCII Art and put it into your games/menus to make it more fun for the end user
-# Ability to switch players (player menu, bankroll information)
-# Player's bankroll persists while moving from game to game
-# Player's bankroll persists if you switch to different players
-# Random events occur when changing games that can increase or decrease player's bankroll
-# Roulette
-# Craps
-# Build a card deck 
-# Card games (Blackjack, Poker, Casino War, etc...)
-# Any other Casino game you can think of
-# Create your own game
+@menu = [
+  {key:1, name: "SLOTS"}
+  {key:2, name: "21 (BLACKJACK)"}
+  {key:3, name: "ROULETTE"}
+  {key:4, name: "SHOW BALANCE"}
+  {key:5, name: "EXIT"}
+]
 
-## Roulette
+def display_options
+  border
+  @menu.each_with_index do | menu, index|
+    puts " #{menu[:key]}, #{menu[:name]}"
+  end
+end
+
+
+def display_menu
+  puts "WHAT WOULD YOU LIKE TO PLAY?"
+  display_options
+  choice = gets.chomp.to_i
+  case choice
+  when 1
+    display_slots_menu
+  when 2
+    display_21_menu
+  when 3
+    display_roulette_menu
+  when 4
+    show_balance
+  when 5
+    leave_casino
+    puts "THANK YOU COME AGAIN"
+    exit
+  else 
+    puts "INVALID CHOICE"
+    display_menu
+  end 
+end
+ 
