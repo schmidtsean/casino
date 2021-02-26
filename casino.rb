@@ -15,7 +15,6 @@ puts "Hello #{name} your account total is #{account}"
 ]
 
 def display_options
-  border
   @menu.each_with_index do | menu, index|
     puts " #{menu[:key]}, #{menu[:name]}"
   end
