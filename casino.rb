@@ -33,6 +33,7 @@ def display_menu
     display_slots_menu
   when 2
     display_21_menu
+    # This is Tyler's section
   when 3
     display_roulette_menu
   when 4
