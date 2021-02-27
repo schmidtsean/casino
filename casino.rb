@@ -2,13 +2,13 @@ puts "What Is Your Name?"
 name = gets.chomp
 puts "How Much Would You Like To Add To Your Account?"
 account = gets.chomp.to_f
-puts "Hello #{name} your account total is #{account}"
+puts "Hello #{name} your account total is $#{account}"
 
 @wallet = account 
 
 @menu = [
   {key:1, name: "SLOTS"}
-  {key:2, name: "21 (BLACKJACK)"}
+  {key:2, name: 21}
   {key:3, name: "ROULETTE"}
   {key:4, name: "SHOW BALANCE"}
   {key:5, name: "EXIT"}
@@ -20,6 +20,9 @@ def display_options
   end
 end
 
+def show_balance
+  puts "Your Balance Is #{@wallet}"
+end
 
 def display_menu
   puts "WHAT WOULD YOU LIKE TO PLAY?"

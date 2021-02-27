@@ -1,4 +1,13 @@
+puts "What Is Your Name?"
+name = gets.chomp
+puts "How Much Would You Like To Add To Your Account?"
+account = gets.chomp.to_f
+puts "Hello #{name} your account total is $#{account}"
 
+@wallet = account 
+
+
+  
   def start_slot
     pull_lever
   end
