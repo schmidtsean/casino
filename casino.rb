@@ -36,7 +36,7 @@ def display_menu
   when 3
     display_roulette_menu
   when 4
-    show_balance
+    show_balancef
   when 5
     leave_casino
     puts "THANK YOU COME AGAIN"
