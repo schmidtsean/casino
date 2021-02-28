@@ -54,6 +54,7 @@ class Deck
     @my_hand.each do |card|
       puts "#{card.rank} #{card.suit} (#{card.color})"
     end
+    puts "\n"
   end
 
   def show_dealer_1st_card

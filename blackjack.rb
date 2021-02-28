@@ -2,8 +2,8 @@ require_relative 'deck'
 
 def initial_card_deal;
   2.times {
-    deck.draw_card
-    deck.draw_card_dealer}
+    @deck.draw_card
+    @deck.draw_card_dealer}
 end
 
 @values_21 = [
@@ -27,19 +27,15 @@ puts "How much would you like to bet?"
 bet_amount = gets.chomp.to_i
 
 # Create deck and shuffle the cards
-deck = Deck.new
-deck.shuffle_cards
+@deck = Deck.new
+@deck.shuffle_cards
 
-# Deal 2 cards to the player and the dealer
-# initial_card_deal
-2.times {
-  deck.draw_card
-  deck.draw_card_dealer
-}
-deck.display_my_hand
+# Deal 2 cards to the player and the dealer and display player's hand
+initial_card_deal
+@deck.display_my_hand
 
 # Show dealers first card
-deck.show_dealer_1st_card
+@deck.show_dealer_1st_card
 
 # Ask the player if they'd like to be hit with another card until they say no
 response = 'yes'
@@ -47,14 +43,12 @@ until response == 'no'
   puts "Would you like to draw another card? (yes/no)"
   response = gets.chomp.to_s
   if response == 'yes'
-    deck.draw_card
-    deck.display_my_hand
+    @deck.draw_card
+    @deck.display_my_hand
   else
     break
   end
 end
-
-puts @my_hand[0]
 
 puts "Thank you for playing 21!"
 
