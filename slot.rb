@@ -1,4 +1,4 @@
-require "pry"
+
 
 puts "What Is Your Name?"
 name = gets.chomp
