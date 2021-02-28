@@ -1,68 +1,92 @@
-puts "welcome to the Roulette table."
+@balance = 100
+puts "welcome to the Roulette table. your balance is #{@balance}"
+puts "your balance is #{@balance}"
 puts "how much would you like to bet?"
-bet = gets.chomp.to_i
-puts "would you like to bet on [color], [odd], [even], or [number] 1-36"
-choice = gets.chomp.to_i
-@display[
-    {key:1, name: "lets play!"}
-    {key:2, name: "im good"}
+@bet = gets.chomp.to_i
+@menu =[
+    {key:1, name: "color"},
+    {key:2, name: "odd or even"},
+    {key:3, name: "number"},
+    {key:4, name: "view balance?"},
+    {key:5, name: "Back to Main Menu"}
 ]
-@menu [
-    {key:1, name: "color"}
-    {key:2, name: "odd or even"}
-    {key:3, name: "number"}
+@wallet =[ 
+    @balance += @bet
 ]
-def table_number
-    results = rand(36)
-    puts "#{results}"
-end
-def table_color
-    color_results = rand("red" || "black")
-    puts "#{color_results}"
-end
-def table_odd_or_even
-    odds_results = rand(1.. 2)
-    1 = odd
-    2 = even
-end
-def display_display
-    choice = gets.chomp.to_i
-    case choice
-    when 1
-        display_options
-    else 
-        exit_store
+
+def display_options
+    @menu.each_with_index do | menu, index |
+        puts " #{menu[:key]}, #{menu[:name]}"
     end
 end
-def display_options
-    @menus.each_with_index do | menu, index |
-    puts " #{menu[:key]}, #{menu[:name]}"
+def table_number
+    @results = rand(1..36)
 end
-def bets
+def table_color
+    red = 1
+    black = 2
+    @color_results = rand(1..2)
+end
+def table_odd_or_even
+    odd = 1
+    even = 2
+    @odds_results = rand(1..2)
+end
+
+def display_menu
+    puts "please choose how you would like to bet"
+    display_options
     choice = gets.chomp.to_i
     case choice
     when 1 
-        puts " would you like to bet on red or black?"
-        color_choice = gets.chomp 
+        puts " would you like to bet on 1 red or 2 black?"
+        color_choice = gets.chomp.to_i
         table_color
-        if table_color = color_choice
+        if @color_results == color_choice
             puts "YOU WIN!"
-            balance *= 2
+            @bet *= 2
+            @balance += @bet
+            display_menu
         else 
             puts "YOU LOSE.. TRY AGAIN!"
-            display_display
+            @balance -= @bet
+            display_menu
         end
     when 2 
         puts "would you like to bet on odds or even?"
-        odds_choice = gets.chomp
-        table_odd_or_even
-        if table_odd_or_even = odds_choice
+        odds_choice = gets.chomp.to_i
+        @table_odd_or_even
+        if @odds_results == odds_choice
             puts "GREAT JOB!"
-            balance *= 2
+            @bet *= 2
+            @balance += @bet
+            display_menu
         else
             puts "YOU LOSE.. TRY AGAIN!"
-            display_display
+            @balance -= @bet
+            display_menu
         end
-      end
-end
+    when 3
+        puts "what number 1-36 would you like to put your money on?"
+        number_choice = gets.chomp.to_i
+        table_number
+        if @results == number_choice
+            puts "ITS YOUR LUCKY DAY!"
+            @bet *= 10
+            @balance += @bet
+            display_menu
+        else 
+            puts "NO LUCK BOB.. TRY AGAIN!"
+            @balance -= @bet
+            display_menu
+        end
+    when 4 
+        puts "your balance is #{@balance}"
+        display_menu
+    else
+        puts "your balance was #{@balance}"
+    end
+    #add way to get back to main menu
   
+end
+display_menu

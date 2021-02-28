@@ -37,15 +37,18 @@ def not_enough_cash
   end
 end
 
-def winnings
-  if @slot_num1 == @slot_num3 || @slot_num2 == @slot_num1
-    puts "YOU'RE ON FIRE!!! $10"
-    @wallet += 10
-  elsif @slot_num2 || @slot_num3
+def winnings #method doesnt work
+  if @slot_num1 == @slot_num3 || @slot_num2 == @slot_num1 # when all numbers equal
+    puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
+    @wallet += 100
+  elsif @slot_num2 == @slot_num3 #when number 2 and 3 equal
     puts "AWESOME!! $10"
     @wallet += 10
-  elsif @slot_num1 || @slot_num3
+  elsif @slot_num1 == @slot_num3 #when number 1 and 3 equal
     puts "WOW!!! $10"
+    @wallet += 10
+  elsif @slot_num1 == @slot_num2 #when number 1 and 2 equal
+    puts "SWEET!!! $10"
     @wallet += 10
   else 
     puts "LOSER... TRY AGAIN!"
