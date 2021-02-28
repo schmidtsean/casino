@@ -1,3 +1,5 @@
+
+
 puts "What Is Your Name?"
 name = gets.chomp
 puts "How Much Would You Like To Add To Your Account?"
@@ -7,9 +9,10 @@ puts "Hello #{name} your account total is $#{account}"
 @wallet = account 
 
 puts "WELCOME TO SLOTS!"
-class Lever
-  def initialize
+
+  def start_slot
     pull_lever
+    
   end
   
   def pull_lever
@@ -22,7 +25,7 @@ class Lever
   def show_num
     puts @slot_num1, @slot_num2, @slot_num3
   end
-end
+
 
 def bet
   @wallet -= 1
@@ -38,7 +41,7 @@ def not_enough_cash
 end
 
 def winnings #method doesnt work
-  if @slot_num1 == @slot_num3 || @slot_num2 == @slot_num1 # when all numbers equal
+  if @slot_num1 == @slot_num3 && @slot_num2 == @slot_num1 # when all numbers equal
     puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
     @wallet += 100
   elsif @slot_num2 == @slot_num3 #when number 2 and 3 equal
@@ -69,7 +72,8 @@ def slot
   case choice
   when 1
     bet
-    Lever.new
+    start_slot
+    
     winnings
     play_slots
     
