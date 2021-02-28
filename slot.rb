@@ -28,15 +28,24 @@ def bet
   @wallet -= 1
 end
 
+def not_enough_cash
+  if @wallet > 0
+    slot
+  else @wallet < 0
+    puts "You Do Not Have Enough Money"
+    exit                                      #fix this when added to main
+  end
+end
+
 def winnings
-  if @slot_num1 == @slot_num2 && @slot_num2 == @slot_num3 && @slot_num1 == @slot_num3
-    puts "GOOD JOB!!! YOU WON $100"
-    @wallet += 100
-  elsif @slot_num1 == @slot_num2 
+  if @slot_num1 == @slot_num3 || @slot_num2 == @slot_num1
     puts "YOU'RE ON FIRE!!! $10"
     @wallet += 10
-  elsif @slot_num2 == @slot_num3
+  elsif @slot_num2 || @slot_num3
     puts "AWESOME!! $10"
+    @wallet += 10
+  elsif @slot_num1 || @slot_num3
+    puts "WOW!!! $10"
     @wallet += 10
   else 
     puts "LOSER... TRY AGAIN!"
@@ -45,8 +54,14 @@ end
 
 def play_slots 
   puts "Enter $1 to spin"
+  not_enough_cash
+end
+
+def slot 
+  
   puts "Press 1.To Spin 2.To exit"
   choice = gets.chomp.to_i
+  
   puts "_" * 20
   case choice
   when 1
