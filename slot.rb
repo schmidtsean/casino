@@ -40,7 +40,7 @@ def not_enough_cash
   end
 end
 
-def winnings #method doesnt work
+def winnings 
   if @slot_num1 == @slot_num3 && @slot_num2 == @slot_num1 # when all numbers equal
     puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
     @wallet += 100
