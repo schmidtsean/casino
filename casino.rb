@@ -1,3 +1,4 @@
+
 puts "What Is Your Name?"
 name = gets.chomp
 puts "How Much Would You Like To Add To Your Account?"
@@ -7,10 +8,10 @@ puts "Hello #{name} your account total is $#{account}"
 @wallet = account 
 
 @menu = [
-  {key:1, name: "SLOTS"}
-  {key:2, name: 21}
-  {key:3, name: "ROULETTE"}
-  {key:4, name: "SHOW BALANCE"}
+  {key:1, name: "SLOTS"},
+  {key:2, name: "21 (BLACKJACK)"},
+  {key:3, name: "ROULETTE"},
+  {key:4, name: "SHOW BALANCE"},
   {key:5, name: "EXIT"}
 ]
 
@@ -32,7 +33,7 @@ def display_menu
   when 1
     display_slots_menu
   when 2
-    display_21_menu
+    blackjack_game
   when 3
     display_roulette_menu
   when 4
@@ -46,4 +47,6 @@ def display_menu
     display_menu
   end 
 end
+
+display_menu
  
