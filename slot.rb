@@ -45,14 +45,14 @@ def winnings
     puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
     @wallet += 100
   elsif @slot_num2 == @slot_num3 #when number 2 and 3 equal
-    puts "AWESOME!! $10"
-    @wallet += 10
+    puts "AWESOME!! $1"
+    @wallet += 1
   elsif @slot_num1 == @slot_num3 #when number 1 and 3 equal
-    puts "WOW!!! $10"
-    @wallet += 10
+    puts "WOW!!! $1"
+    @wallet += 1
   elsif @slot_num1 == @slot_num2 #when number 1 and 2 equal
-    puts "SWEET!!! $10"
-    @wallet += 10
+    puts "SWEET!!! $1"
+    @wallet += 1
   else 
     puts "LOSER... TRY AGAIN!"
   end
