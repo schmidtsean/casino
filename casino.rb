@@ -134,12 +134,16 @@ def card_hit
 end
 
 def who_won
+  puts "The dealer's total amount of points is #{@deck.show_card_values_dealer}\n"
   if @deck.show_card_values_dealer > 21
     puts "You Won!"
+    @wallet += (bet_amount * 2)
   elsif @deck.show_card_values == @deck.show_card_values_dealer
     puts "You tied!"
+    @wallet += (bet_amount)
   elsif @deck.show_card_values > @deck.show_card_values_dealer
     puts "You Won!"
+    @wallet += (bet_amount * 2)
   elsif @deck.show_card_values < @deck.show_card_values_dealer
     puts "You Lost!"
   end
@@ -151,6 +155,8 @@ def blackjack_game
   puts "How many dollars would you like to bet?"
   bet_amount = gets.chomp.to_i
   puts "\n"
+  @wallet -= bet_amount
+  
 
   # Create deck and shuffle the cards
   @deck = Deck.new
@@ -178,11 +184,11 @@ def blackjack_game
   puts "\nThank you for playing 21!"
  
     
-  puts "Would you like to play again? ( Yes  No)"
-  choice = gets.chomp.to_s
-  if choice == "yes"
+  puts "Press 1.To Play Again 2.To exit"
+  choice = gets.chomp.to_i
+  if choice == 1
     blackjack_game
-  elsif choice == "no"
+  elsif choice == 2
     display_main_menu
   
 end
@@ -310,7 +316,6 @@ display_menu2
     show_balance
     display_main_menu
   when 5
-    leave_casino
     puts "THANK YOU COME AGAIN"
     exit
   else 

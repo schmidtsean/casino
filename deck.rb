@@ -139,7 +139,6 @@ class Deck
       end
 
     end
-    puts "The dealer's total amount of points is #{@total_choice}\n"
     return @total_choice
   end
 
