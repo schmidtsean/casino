@@ -1,16 +1,10 @@
 
 
-puts "What Is Your Name?"
-name = gets.chomp
-puts "How Much Would You Like To Add To Your Account?"
-account = gets.chomp.to_f
-puts "Hello #{name} your account total is $#{account}"
 
-@wallet = account 
 
 puts "WELCOME TO SLOTS!"
 
-  def start_slot
+  def initialize
     pull_lever
     
   end
@@ -83,4 +77,3 @@ def slot
     display_menu
   end 
 end
-play_slots

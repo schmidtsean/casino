@@ -1,3 +1,4 @@
+class Roulette
 @balance = 100
 puts "welcome to the Roulette table. your balance is #{@balance}"
 puts "your balance is #{@balance}"
@@ -89,4 +90,4 @@ def display_menu
     #add way to get back to main menu
   
 end
-display_menu
+end
