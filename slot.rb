@@ -1,16 +1,10 @@
 
 
-puts "What Is Your Name?"
-name = gets.chomp
-puts "How Much Would You Like To Add To Your Account?"
-account = gets.chomp.to_f
-puts "Hello #{name} your account total is $#{account}"
 
-@wallet = account 
 
 puts "WELCOME TO SLOTS!"
 
-  def start_slot
+  def initialize
     pull_lever
     
   end
@@ -40,19 +34,19 @@ def not_enough_cash
   end
 end
 
-def winnings #method doesnt work
+def winnings 
   if @slot_num1 == @slot_num3 && @slot_num2 == @slot_num1 # when all numbers equal
     puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
     @wallet += 100
   elsif @slot_num2 == @slot_num3 #when number 2 and 3 equal
-    puts "AWESOME!! $10"
-    @wallet += 10
+    puts "AWESOME!! $1"
+    @wallet += 1
   elsif @slot_num1 == @slot_num3 #when number 1 and 3 equal
-    puts "WOW!!! $10"
-    @wallet += 10
+    puts "WOW!!! $1"
+    @wallet += 1
   elsif @slot_num1 == @slot_num2 #when number 1 and 2 equal
-    puts "SWEET!!! $10"
-    @wallet += 10
+    puts "SWEET!!! $1"
+    @wallet += 1
   else 
     puts "LOSER... TRY AGAIN!"
   end
@@ -83,4 +77,3 @@ def slot
     display_menu
   end 
 end
-play_slots

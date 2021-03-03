@@ -1,3 +1,5 @@
+
+
 require_relative 'deck'
 
 # Create methods for program
@@ -69,4 +71,3 @@ def blackjack_game
   puts "\nThank you for playing 21!"
 end
 
-blackjack_game

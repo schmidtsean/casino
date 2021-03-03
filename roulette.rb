@@ -1,3 +1,4 @@
+class Roulette
 @balance = 100
 puts "welcome to the Roulette table. your balance is #{@balance}"
 puts "your balance is #{@balance}"
@@ -39,7 +40,7 @@ def display_menu
     choice = gets.chomp.to_i
     case choice
     when 1 
-        puts " would you like to bet on 1 red or 2 black?"
+        puts " would you like to bet on 1. red or 2. black?"
         color_choice = gets.chomp.to_i
         table_color
         if @color_results == color_choice
@@ -53,7 +54,7 @@ def display_menu
             display_menu
         end
     when 2 
-        puts "would you like to bet on odds or even?"
+        puts "would you like to bet on 1. odds or 2. even?"
         odds_choice = gets.chomp.to_i
         @table_odd_or_even
         if @odds_results == odds_choice
@@ -89,4 +90,4 @@ def display_menu
     #add way to get back to main menu
   
 end
-display_menu
+end
