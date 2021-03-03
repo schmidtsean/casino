@@ -97,9 +97,6 @@ class Deck
       choice = gets.chomp.to_i
       @total_choice = total[choice - 1]
     end
-  
-    puts "Your total amount of points is: #{@total_choice}"
-    puts "\n"
     return @total_choice
   end
 

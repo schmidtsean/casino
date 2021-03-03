@@ -134,29 +134,45 @@ def card_hit
 end
 
 def who_won
-  puts "The dealer's total amount of points is #{@deck.show_card_values_dealer}\n"
-  if @deck.show_card_values_dealer > 21
+  dealer_value = @deck.show_card_values_dealer
+  puts "Your total amount of points is: #{@player_value}\n"
+  puts "The dealer's total amount of points is #{dealer_value}\n"
+  if dealer_value > 21
     puts "You Won!"
-    @wallet += (bet_amount * 2)
-  elsif @deck.show_card_values == @deck.show_card_values_dealer
+    @wallet += (@bet_amount * 2)
+  elsif @player_value == dealer_value
     puts "You tied!"
-    @wallet += (bet_amount)
-  elsif @deck.show_card_values > @deck.show_card_values_dealer
+    @wallet += (@bet_amount)
+  elsif @player_value > dealer_value
     puts "You Won!"
-    @wallet += (bet_amount * 2)
-  elsif @deck.show_card_values < @deck.show_card_values_dealer
+    @wallet += (@bet_amount * 2)
+  elsif @player_value < dealer_value
     puts "You Lost!"
   end
+end
+
+def bet_amount_choice
+  if @wallet >= @bet_amount
+    @wallet -= @bet_amount
+  else
+    puts "You do not have enough funds to bet $#{@bet_amount}."
+    puts "Would you like to 1. Choose a different amount or 2. Go to main menu?"
+    bet_choice = gets.chomp.to_i
+    if bet_choice == 1
+      blackjack_game
+    else
+      display_main_menu
+    end
+  end 
 end
 
 def blackjack_game
   #Begin Program
   puts "Welcome to 21! We hope you enjoy!\n\n"
   puts "How many dollars would you like to bet?"
-  bet_amount = gets.chomp.to_i
+  @bet_amount = gets.chomp.to_i
   puts "\n"
-  @wallet -= bet_amount
-  
+  bet_amount_choice
 
   # Create deck and shuffle the cards
   @deck = Deck.new
@@ -173,10 +189,18 @@ def blackjack_game
   card_hit
 
   # Calcuate the value of the players hand
-  if @deck.show_card_values > 21
-    puts "You Lost!"
-    puts "\nThank you for playing 21!"
-    exit
+  @player_value = @deck.show_card_values
+  if @player_value > 21
+    puts "Your total amount of points is: #{@player_value}\n"
+    puts "You Busted!"
+    puts "\nThank you for playing 21!\n\n"
+    puts "Press 1.To Play Again 2.To exit"
+    choice = gets.chomp.to_i
+    if choice == 1
+      blackjack_game
+    elsif choice == 2
+      display_main_menu
+    end
   end
 
   # Calculate the value of the players hand and say who won
