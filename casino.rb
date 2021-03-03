@@ -22,6 +22,7 @@ def display_options
 end
 
 def show_balance
+  puts "_" * 20
   puts "Your Balance Is #{@wallet}"
 end
 
@@ -59,7 +60,7 @@ def not_enough_cash
     slot
   else @wallet < 0
     puts "You Do Not Have Enough Money"
-    exit                                      #fix this when added to main
+    display_main_menu                                     #fix this when added to main
   end
 end
 
@@ -88,7 +89,7 @@ end
 
 def slot 
   
-  puts "Press 1.To Spin 2.To exit"
+  puts "Would you like to play again? 1. Yes 2. No"
   choice = gets.chomp.to_i
   
   puts "_" * 20
@@ -147,6 +148,7 @@ end
 
 def blackjack_game
   #Begin Program
+
   puts "Welcome to 21! We hope you enjoy!\n\n"
   puts "How many dollars would you like to bet?"
   bet_amount = gets.chomp.to_i
@@ -178,7 +180,7 @@ def blackjack_game
   puts "\nThank you for playing 21!"
  
     
-  puts "Would you like to play again? ( Yes  No)"
+  puts "Would you like to play again? (Yes  No)"
   choice = gets.chomp.to_s
   if choice == "yes"
     blackjack_game
@@ -194,6 +196,16 @@ blackjack_game
 puts "welcome to the Roulette table. your balance is $#{@balance}"
 puts "How much would you like to bet?"
 @bet = gets.chomp.to_i
+no_money
+
+def no_money
+  if @wallet > 0
+    slot
+  else @wallet < 0
+    puts "You Do Not Have Enough Money"
+    display_main_menu                                     
+  end
+end
 
 @menu =[
     {key:1, name: "Color"},
@@ -310,7 +322,7 @@ display_menu2
     show_balance
     display_main_menu
   when 5
-    leave_casino
+    
     puts "THANK YOU COME AGAIN"
     exit
   else 
