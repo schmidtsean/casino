@@ -34,6 +34,21 @@ class Roulette
       @odds_results = rand(1..2)
   end
 
+  def bet_amount_choice2
+    if $wallet >= @bet
+      $wallet -= @bet
+    else
+      puts "You do not have enough funds to bet $#{@bet}."
+      puts "Would you like to 1. Choose a different amount or 2. Go to main menu?"
+      bet_choice = gets.chomp.to_i
+      if bet_choice == 1
+       display_menu2
+      else
+        @app.display_main_menu
+      end
+    end 
+  end
+
   def display_menu2
       @app = App.new
       puts "welcome to the Roulette table. your balance is $#{$wallet}"
@@ -44,6 +59,7 @@ class Roulette
       when 1 
         puts "How much would you like to bet?"
         @bet = gets.chomp.to_i
+        bet_amount_choice2
           puts "Would you like to bet on 1. Red or 2. Black?"
           color_choice = gets.chomp.to_i
           table_color
@@ -60,7 +76,8 @@ class Roulette
       when 2 
         puts "How much would you like to bet?"
         @bet = gets.chomp.to_i
-          puts "Would you like to bet on 1. Odds or 2. Even?"
+        bet_amount_choice2
+        puts "Would you like to bet on 1. Odds or 2. Even?"
           odds_choice = gets.chomp.to_i
           @table_odd_or_even
           if @odds_results == odds_choice
@@ -76,6 +93,7 @@ class Roulette
       when 3
         puts "How much would you like to bet?"
         @bet = gets.chomp.to_i
+        bet_amount_choice2
           puts "What number 1-36 would you like to put your money on?"
           number_choice = gets.chomp.to_i
           table_number
