@@ -33,14 +33,14 @@ class Slots
         puts "YOU'RE ON FIRE!!! ALL THREE!!! $100"
         $wallet += 100
       elsif @slot_num2 == @slot_num3 #when number 2 and 3 equal
-        puts "AWESOME!! $1"
-        $wallet += 1
+        puts "AWESOME!! $2"
+        $wallet += 2
       elsif @slot_num1 == @slot_num3 #when number 1 and 3 equal
-        puts "WOW!!! $1"
-        $wallet += 1
+        puts "WOW!!! $2"
+        $wallet += 2
       elsif @slot_num1 == @slot_num2 #when number 1 and 2 equal
-        puts "SWEET!!! $1"
-        $wallet += 1
+        puts "SWEET!!! $2"
+        $wallet += 2
       else 
         puts "LOSER... TRY AGAIN!"
       end
